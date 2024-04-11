@@ -1,5 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
+import { contextAccessToken,contextUserToken } from "../context";
+
+import Search from "./search";
 
 
 
@@ -16,7 +19,8 @@ const Test = () =>{
     const [token,setToken] = useState("")
 
 
-    const [albums,setAlbums] = useState([])
+
+    
     const [userID, setUserID] = useState("")
 
     // run hook when user logs in
@@ -88,46 +92,24 @@ const Test = () =>{
         
     },[])
 
-    // search for artists
-    async function search() {
-        const artistParameters = {
-            method:'GET',
-            headers:{
-                'Content-Type':'application/json',
-                'Authorization':'Bearer ' + accessToken
-            }
-        }
-        // get the artist individual ID
-        const artistID = await fetch('https://api.spotify.com/v1/search?q=yoasobi&type=artist',artistParameters)
-        .then(response => response.json())
-        .then(data => {return data.artists.items[0].id})
-        
-        // get the albums by individual ID
-        const albums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=JP&limit=50',artistParameters)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            setAlbums(data.items);
-        })
 
 
-        
-    }
+
+
     
-
-
-
-
 
     
     return (
-        <>
-        {!token ?
-         <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`} >Login</a>:
-         <button onClick={logout}>logout</button>}
-        <h1 onClick={search}>test</h1>
-        
-        </>
+        <contextAccessToken.Provider value={{ accessToken: String(accessToken) }}>
+            <contextUserToken.Provider value={{ token }}>
+
+                {!token ?
+                <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`} >Login</a>:
+                <button onClick={logout}>logout</button>}
+                <Search/>
+                
+           </contextUserToken.Provider>
+        </contextAccessToken.Provider>
     )
 }
 
