@@ -11,8 +11,10 @@ const Test = () =>{
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
     const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
     const REDIRECT_URI = "http://localhost:3000/";
-    const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
+
+    const AUTH_ENDPOINT = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=user-read-email%20user-read-private%20user-follow-read`;
+
 
     // change state of accessToken, and token for each individual user
     const [accessToken, setAccessToken] = useState("");
@@ -51,19 +53,31 @@ const Test = () =>{
                 'Authorization': 'Bearer ' + token
             }
         };
-    
+        // get user's playlist
         try {
             const playlist = await fetch('https://api.spotify.com/v1/me/playlists', userParameters);
             const userPlaylists = await playlist.json()
             console.log(userPlaylists)
             if (!playlist.ok) {
-                throw new Error('Failed to fetch user data');
+                throw new Error('Failed to fetch user playlist');
             }
 
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            console.error('Error fetching user playlist:', error);
         }
+        // get user followed artists
+        try {
+            const followedArtists = await fetch("https://api.spotify.com/v1/me/following?type=artist",userParameters);
+            const userFollowedArtists = await followedArtists.json()
+            console.log(userFollowedArtists)
+            if (!followedArtists.ok) {
+                throw new Error('Failed to fetch user artists');
+            }
 
+        } catch (error) {
+            console.error('Error fetching user artists:', error);
+        }
+        
     }
     
     
@@ -104,7 +118,7 @@ const Test = () =>{
             <contextUserToken.Provider value={{ token }}>
 
                 {!token ?
-                <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`} >Login</a>:
+                <a href={AUTH_ENDPOINT} >Login</a>:
                 <button onClick={logout}>logout</button>}
                 <Search/>
                 
