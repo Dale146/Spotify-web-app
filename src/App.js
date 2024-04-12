@@ -1,13 +1,26 @@
 import "./style.scss";
+import React from "react";
 import { useEffect,useState } from "react";
-import Test from "./components/test";
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-router-dom";
+
+import Splash from "./Pages/Splash";
+import Home from "./Pages/Home";
 
 
 function App() {
 
   return (
     <>
-      <Test></Test>
+    <Router>
+      <Routes>
+      
+      <Route exact path ="/" element ={<Splash/>}/>
+      <Route path= "/home" element ={<Home/>}/>
+
+     
+    
+      </Routes>
+    </Router>
 
 
    </>

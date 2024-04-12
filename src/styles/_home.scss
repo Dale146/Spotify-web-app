@@ -1,0 +1,16 @@
+@import "./variable";
+@font-face{
+    font-family: 'spotify';
+    src: url("../../public/fonts/Metropolis-SemiBold.otf") format('opentype');
+}
+
+body{
+    
+    background-color: $base-color;
+    font-family: 'spotify';
+}
+main{
+    margin-top: 65px;
+    padding-top: 20px;
+    
+}

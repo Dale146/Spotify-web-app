@@ -1,0 +1,44 @@
+@import "./variable";
+
+
+.playlist-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    background-color:$secondary-color ;
+    border-radius: 20px;
+    box-shadow: $main-shadow;
+}
+.title-container{
+    background-color: $base-color;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: $secondary-color;
+    padding-left:10px;
+    h2{
+        font-size: 16px;
+    }
+    
+}
+
+.album{
+    max-width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    img{
+        width: 170px;
+        border-radius: 20px;
+        box-shadow: $track-shadow;
+    }
+    h5{
+        margin: 0;
+    }
+}

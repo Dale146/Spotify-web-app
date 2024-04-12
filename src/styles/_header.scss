@@ -1,0 +1,36 @@
+@import "./variable";
+
+header{
+    background-color: $secondary-color;
+    position: fixed;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 0;
+    height:65px ;
+    
+    button{
+        border: none;
+        outline: none;
+        background: none;
+        padding: 0;
+        margin: 0;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    .log{
+        position: absolute;
+        right: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-right: 20px;
+        font-size: 24px;
+        text-decoration: none;
+        color: $base-color;
+        
+        
+    }
+}

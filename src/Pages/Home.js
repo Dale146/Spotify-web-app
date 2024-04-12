@@ -2,16 +2,16 @@ import React from "react";
 import { useState, useEffect,useContext } from "react";
 import { contextAccessToken,contextUserToken } from "../context";
 
-import Search from "./search";
-import Header from "./Header";
+import Search from "../components/search";
+import Header from "../components/Header";
+import UserPlaylist from "../components/userPlaylist";
 
 
-
-const Test = () =>{
+const Home = () =>{
     // spotify API
     const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
     const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
-    const REDIRECT_URI = "http://localhost:3000/";
+    const REDIRECT_URI = "http://localhost:3000/home";
     const RESPONSE_TYPE = "token"
 
     const AUTH_ENDPOINT = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=user-read-email%20user-read-private%20user-follow-read`;
@@ -26,34 +26,7 @@ const Test = () =>{
     
     const [userID, setUserID] = useState("")
 
-    // // run hook when user logs in
-    // useEffect(() => {
-    //     const hash = window.location.hash;
-    //     let storedToken = window.localStorage.getItem("token");
-    //     // if local storage DO NOT have user token, run↓
-    //     if (!storedToken && hash) {
-    //         storedToken = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
-    //         window.location.hash = "";
-    //         window.localStorage.setItem("token", storedToken);
-    //     }
-    //     // give $token var
-    //     setToken(storedToken);
-        
-    //     // if the user success logs in and the server gets the token, run function fetchUserData
-    //     if (storedToken) {
-    //         fetchUserData(storedToken); 
-    //     }
-    // }, []);
-    
-    // // get user playlist
-    // async function fetchUserData(token) {
-    //     const userParameters = {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': 'Bearer ' + token
-    //         }
-    //     };
+   
     //     // get user's playlist
     //     try {
     //         const playlist = await fetch('https://api.spotify.com/v1/me/playlists', userParameters);
@@ -117,15 +90,17 @@ const Test = () =>{
     return (
         <contextAccessToken.Provider value={{ accessToken }}>
             <contextUserToken.Provider value={{ token }}>
-                <Header></Header>
-                {/* {!token ?
-                <a href={AUTH_ENDPOINT} >Login</a>:
-                <button onClick={logout}>logout</button>}
-                <Search/> */}
+                <Header/>
+                <main>
+
+                <UserPlaylist/>
+                
+                </main>
+
                 
            </contextUserToken.Provider>
         </contextAccessToken.Provider>
     )
 }
 
-export default Test;
+export default Home;
