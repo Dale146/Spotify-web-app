@@ -4,15 +4,19 @@ import homeIcon from "../images/Home.svg";
 import userIcon from "../images/User.svg"
 import searchIcon from "../images/seach-btn.svg";
 
-function Footer() {
 
+
+function Footer(props) {
+    const handleIconClick = (content) => {
+        props.setDisplayContent(content);
+    }
 
     return (
         <footer>
             <div className='footer-container'>
-                <img src={homeIcon} alt='home icon' />
-                <img src={searchIcon} alt='searchIcon' />
-                <img src={userIcon} alt='user icon' />
+                <img src={homeIcon} alt='home icon' onClick={() => handleIconClick("default")}/>
+                <img src={searchIcon} alt='searchIcon' onClick={() => handleIconClick("search")}/>
+                <img src={userIcon} alt='user icon' onClick={() => handleIconClick("user")}/>
             </div>
         </footer>
     )

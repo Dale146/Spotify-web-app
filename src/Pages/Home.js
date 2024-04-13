@@ -22,7 +22,8 @@ const Home = () =>{
     const [accessToken, setAccessToken] = useState("");
     const [token,setToken] = useState("")
 
-
+    // change state of showing content
+    const [displayContent, setDisplayContent] = useState("default")
 
     
     const [userID, setUserID] = useState("")
@@ -94,12 +95,12 @@ const Home = () =>{
                 <Header/>
                 <main>
 
-                <UserPlaylist/>
-                {/* <Search/> */}
+                {displayContent === "default" && <UserPlaylist />}
+                {displayContent === "search" && <Search />}
                
                 </main>
 
-                <Footer/>
+                <Footer setDisplayContent={setDisplayContent}/>
            </contextUserToken.Provider>
         </contextAccessToken.Provider>
     )
