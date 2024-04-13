@@ -4,6 +4,7 @@ import { contextAccessToken,contextUserToken } from "../context";
 
 import Search from "../components/search";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import UserPlaylist from "../components/userPlaylist";
 
 
@@ -93,12 +94,12 @@ const Home = () =>{
                 <Header/>
                 <main>
 
-                {/* <UserPlaylist/> */}
-                <Search/>
-
+                <UserPlaylist/>
+                {/* <Search/> */}
+               
                 </main>
 
-                
+                <Footer/>
            </contextUserToken.Provider>
         </contextAccessToken.Provider>
     )

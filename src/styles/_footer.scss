@@ -1,0 +1,20 @@
+@import "./variable";
+
+footer{
+    background-color: $secondary-color;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    .footer-container{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        
+        
+    }
+    .footer-container :nth-child(2){
+        transform: translateY(-30px);
+    }
+}
