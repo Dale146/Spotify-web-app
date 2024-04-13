@@ -8,7 +8,9 @@ import Home from "./Pages/Home";
 
 
 function App() {
-
+  useEffect(() => {
+    document.title = "My spotify App"; 
+  }, []);
   return (
     <>
     <Router>
