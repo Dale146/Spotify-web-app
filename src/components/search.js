@@ -43,7 +43,7 @@ const Search = () => {
         
     }
     const artistAlbumsInfo = albums || [];
-    console.log(artistAlbumsInfo)
+
 
 
     return (
