@@ -93,8 +93,9 @@ const Home = () =>{
                 <Header/>
                 <main>
 
-                <UserPlaylist/>
-                
+                {/* <UserPlaylist/> */}
+                <Search/>
+
                 </main>
 
                 

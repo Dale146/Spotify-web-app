@@ -42,31 +42,47 @@ const UserPlaylist = () => {
 
             return (
                 <>
-                {userPlaylistInfo && userPlaylistInfo.length > 0 ? (
                     <div className="yourPlaylist">
                         <div className="playlist-container">
                             <section className="title-container">
                                 <h2>Your Playlists</h2>
                             </section>
-                            <section className="album-container">
-                                {userPlaylistInfo.map((playlist, index) => {
-                                    return ( 
-                                        <div className="album" key={playlist.id}>
-                                        <img src={playlist.images[0].url} alt={playlist.name} />
-                                        <h5>{playlist.name}</h5>
-                                        <span>tracks : {playlist.tracks.total}</span>
-                                        
-                                        </div>
-                                    );
-                                })}
-                            </section>
-                    </div>
-                    </div>
+                                {userPlaylistInfo && userPlaylistInfo.length > 0 ? (
+                                <section className="album-container">
+                                    {userPlaylistInfo.map((playlist, index) => {
+                                        return ( 
+                                            <div className="album" key={playlist.id}>
+                                            <img src={playlist.images[0].url} alt={playlist.name} />
+                                            <h5>{playlist.name}</h5>
+                                            <span>tracks : {playlist.tracks.total}</span>
+                                            
+                                            </div>
+                                        );
+                                    })}
+                                            <div className="album">
+                                            <img className="test" src="" />
+                                            <h5>my name</h5>
+                                            <span>tracks : 24</span>
+                                            
+                                            </div>
+                                            <div className="album">
+                                            <img className="test" src="" />
+                                            <h5>my name</h5>
+                                            <span>tracks : 24</span>
+                                            
+                                            </div>
+                                </section>
+
                     
                 
             ) : (
-                <p>Loading...</p>
+
+                        <section className="album-container">
+                            <p>you are not logged in or you do not have any playlist...</p>
+                        </section>
             )}
+                    </div>
+                </div>
                 </>
             )
 }
