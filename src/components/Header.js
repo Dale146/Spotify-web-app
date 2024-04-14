@@ -8,7 +8,7 @@ function Header() {
     const REDIRECT_URI = "http://localhost:3000/my-app/pages/Home";
     const RESPONSE_TYPE = "token"
 
-    const AUTH_ENDPOINT = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=user-read-email%20user-read-private%20user-follow-read`;
+    const AUTH_ENDPOINT = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=user-read-email%20user-read-private%20user-follow-read%20user-top-read`;
 
     const {token, logout} = useAuth();
 

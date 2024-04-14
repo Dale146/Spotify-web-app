@@ -16,7 +16,7 @@ function Footer(props) {
             <div className='footer-container'>
                 <img src={homeIcon} alt='home icon' onClick={() => handleIconClick("default")}/>
                 <img src={searchIcon} alt='searchIcon' onClick={() => handleIconClick("search")}/>
-                <img src={userIcon} alt='user icon' onClick={() => handleIconClick("user")}/>
+                <img src={userIcon} alt='user icon' onClick={() => handleIconClick("profile")}/>
             </div>
         </footer>
     )

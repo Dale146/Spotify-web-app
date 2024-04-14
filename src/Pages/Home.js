@@ -6,6 +6,7 @@ import Search from "../components/search";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import UserPlaylist from "../components/userPlaylist";
+import UserProfile from "../components/UserInterface";
 
 
 const Home = () =>{
@@ -97,7 +98,7 @@ const Home = () =>{
 
                 {displayContent === "default" && <UserPlaylist />}
                 {displayContent === "search" && <Search />}
-               
+                {displayContent === "profile" && <UserProfile />}
                 </main>
 
                 <Footer setDisplayContent={setDisplayContent}/>

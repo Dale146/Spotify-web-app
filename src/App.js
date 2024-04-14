@@ -18,7 +18,7 @@ function App() {
       
       <Route exact path ="/" element ={<Splash/>}/>
       <Route path= "/pages/Home" element ={<Home/>}/>
-
+    
      
     
       </Routes>

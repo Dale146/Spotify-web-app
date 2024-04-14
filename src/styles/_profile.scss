@@ -1,0 +1,16 @@
+@import "./variable";
+
+.info-container{
+    height: 250px;
+    margin-top: -65px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+}
+.profile-details{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 65px;
+    img{
+        border-radius: 50%;
+        width: 130px;
+    }
+}

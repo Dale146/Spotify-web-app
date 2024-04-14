@@ -1,0 +1,23 @@
+@import "./variable";
+
+.top-artist-container{
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+.artist-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+.artist{
+    display: flex;
+    gap: 2rem;
+    
+    img{
+        width: 110px;
+        border-radius: 50%;
+        
+    }
+}

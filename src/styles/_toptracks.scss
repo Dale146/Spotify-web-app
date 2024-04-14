@@ -1,0 +1,14 @@
+@import "./variable";
+
+.tracks-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.track{
+    display: flex;
+    gap: 2rem;
+    img{
+        width: 110px;
+    }
+}
