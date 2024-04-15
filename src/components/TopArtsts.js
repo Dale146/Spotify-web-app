@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect,useContext } from "react";
 import { contextAccessToken,contextUserToken } from "../context";
 import useAuth from "./useAuth";
+import Recommend from "./Recommend";
 
 const TopArtists = () => {
     const {token} = useAuth();
@@ -9,6 +10,7 @@ const TopArtists = () => {
     const [userProfile,setUserProfile] = useState({})
 
     const [topGenres, setTopGenres] = useState([]);
+    
 
     useEffect(() => {
         if(token) {
@@ -49,8 +51,9 @@ const TopArtists = () => {
             }
         }, [userTopArtists]);
         
-        console.log(userTopArtists)
-
+        
+        
+        
             return (
                 <>
                     {userProfile && (
@@ -60,7 +63,7 @@ const TopArtists = () => {
                             <div className="artist-container">
                                 {userTopArtists && userTopArtists.length > 0 ? (
                                     userTopArtists.map((artist,index) => (
-                                        <div key={index} className="artist">
+                                        <div key={index} className="artist hover-container">
                                             <img src={artist.images[2].url} alt={"picture of " + artist.name} />
                                             <section className="artist-details">
                                                 <h3>{artist.name}</h3>
@@ -87,7 +90,8 @@ const TopArtists = () => {
 
                         </div>
                     )}
-
+                    
+                    <Recommend topGenres={topGenres} />
                 </>
             )
 }

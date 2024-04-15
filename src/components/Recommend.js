@@ -3,20 +3,25 @@ import { useState, useEffect,useContext } from "react";
 import { contextAccessToken,contextUserToken } from "../context";
 import useAuth from "./useAuth";
 
-const TopTracks = () => {
+const Recommend = ({topGenres}) => {
     const {token} = useAuth();
 
     const [userProfile,setUserProfile] = useState({})
+    const [reload, setReload] = useState(false);
 
-
-
+    
+    
     useEffect(() => {
-        if(token) {
+        if(token && topGenres && topGenres.length > 0) {
             fetchUserData(token)
         }
-    },[token])
+    },[token,topGenres,reload])
 
     async function fetchUserData(token) {
+        if (!topGenres || topGenres.length === 0){
+            return;
+        }
+        const genresString = topGenres.join("%2C");
         const userParameters = {
             method: 'GET',
             headers: {
@@ -26,9 +31,9 @@ const TopTracks = () => {
         };
         // get user's profile
         try {
-            const profile = await fetch('https://api.spotify.com/v1/me/top/tracks?limit=5', userParameters);
-            const userTopTracks = await profile.json()
-            setUserProfile(userTopTracks)
+            const profile = await fetch(`https://api.spotify.com/v1/recommendations?limit=5&seed_genres=${genresString}`, userParameters);
+            const userRecommendation = await profile.json()
+            setUserProfile(userRecommendation)
             
 
             
@@ -40,22 +45,27 @@ const TopTracks = () => {
             console.error('Error fetching user profile:', error);
         }
     }
-        const userTopTracks = userProfile.items || [];
+        const userRecommend = userProfile.tracks || [];
         
 
+        const handleReload = () => {
+            setReload(!reload);
+        }
         
-
-
+        
+        
             return (
                 <>
                     {userProfile && (
-                        <div className="top-tracks-container">
-                            <h2>Your Top Tracks</h2>
+                        <div className="reccomend-container">
+                            <h2>Recommended Tracks</h2>
+                            <button onClick={handleReload}>Reload</button>
                             {token ?(
                             <div className="tracks-container">
-                                {userTopTracks && userTopTracks.length > 0 ? (
-                                    userTopTracks.map((track,index) => (
+                                {userRecommend && userRecommend.length > 0 ? (
+                                    userRecommend.map((track,index) => (
                                         <div key={index} className="track hover-container">
+                                            
                                             <img src={track.album.images[0].url} alt={"picture of " + track.name} />
                                             <section className="track-details">
                                                 <h3>{track.name}</h3>
@@ -81,9 +91,9 @@ const TopTracks = () => {
 
                         </div>
                     )}
-
+                    
                 </>
             )
 }
 
-export default TopTracks;
+export default Recommend;

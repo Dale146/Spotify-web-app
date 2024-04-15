@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect,useContext } from "react";
 import { contextAccessToken,contextUserToken } from "../context";
 import useAuth from "./useAuth";
+import NewRelease from "./NewRelease";
 
 const UserPlaylist = () => {
     const {token} = useAuth();
@@ -83,7 +84,7 @@ const UserPlaylist = () => {
             )}
                     </div>
                 </div>
-                
+                <NewRelease/>
                 </>
             )
 }

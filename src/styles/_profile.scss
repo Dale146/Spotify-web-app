@@ -1,5 +1,13 @@
 @import "./variable";
+.profile-container{
 
+    
+
+
+}
+.profile-background{
+    background: linear-gradient(180deg, hsla(141, 73%, 42%, 1) 19%, hsla(162, 100%, 32%, 1) 35%, hsla(175, 100%, 28%, 1) 51%, hsla(186, 100%, 26%, 1) 65%, hsla(191, 100%, 23%, 1) 80%, hsla(203, 30%, 26%, 1) 100%);
+}
 .info-container{
     height: 250px;
     margin-top: -65px;
@@ -12,5 +20,12 @@
     img{
         border-radius: 50%;
         width: 130px;
+    }
+}
+.info-details{
+    p{
+        font-size: 0.75em;
+        font-weight: 500;
+        opacity: .75;
     }
 }

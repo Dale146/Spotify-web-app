@@ -4,6 +4,7 @@ import { contextAccessToken,contextUserToken } from "../context";
 import useAuth from "./useAuth";
 import TopArtists from "./TopArtsts";
 import TopTracks from "./TopTracks";
+import Recommend from "./Recommend";
 
 const UserProfile = () => {
     const {token} = useAuth();
@@ -40,39 +41,41 @@ const UserProfile = () => {
         }
     }
         const userProfileInfo = userProfile || {};
-        console.log(userProfileInfo)
+        
 
             return (
-                <>
-                    {userProfile && (
-                        <div className="info-container">
-                            {token ?(
-                            <div className="profile-details">
-                                {userProfileInfo.images && userProfileInfo.images.length > 0 && (
-                                <img src={userProfileInfo.images[1].url} alt="user picture"/>
-                                )}
-                            <section className="info-details">
-
-                                <h2>{userProfileInfo.display_name}</h2>
-                                <p>{userProfileInfo.email}</p>
-                                {userProfileInfo.followers && userProfileInfo.followers.total && (
-                                    <p>followers:{userProfileInfo.followers.total}</p>
-                                )}
-                            </section>
-                            
-                            
-                        </div>
-                            ) : (
+                <div className="profile-container">
+                    <div className="profile-background">
+                        {userProfile && (
+                            <div className="info-container">
+                                {token ?(
                                 <div className="profile-details">
-                                    
-                                </div>
-                            )}
+                                    {userProfileInfo.images && userProfileInfo.images.length > 0 && (
+                                    <img src={userProfileInfo.images[1].url} alt="user picture"/>
+                                    )}
+                                <section className="info-details">
 
-                        </div>
-                    )}
-                    <TopArtists/>
-                    <TopTracks/>
-                </>
+                                    <h2>{userProfileInfo.display_name}</h2>
+                                    <p>{userProfileInfo.email}</p>
+                                    {userProfileInfo.followers && userProfileInfo.followers.total && (
+                                        <p>followers:{userProfileInfo.followers.total}</p>
+                                    )}
+                                </section>
+                                
+                                
+                            </div>
+                                ) : (
+                                    <div className="profile-details">
+                                        
+                                    </div>
+                                )}
+
+                            </div>
+                        )}
+                        <TopArtists/>
+                        <TopTracks/>
+                    </div>
+                </div>
             )
 }
 
