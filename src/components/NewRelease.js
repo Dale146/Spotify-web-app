@@ -33,7 +33,7 @@ const NewRelease = () => {
     const ReleaseAlbums = newReleaseAlbums.albums ? newReleaseAlbums.albums.items || [] : [];
 
     return (
-        <div className="yourPlaylist">
+        <div className="yourPlaylist last">
             <div className="playlist-container">
                 <section className="title-container">
                     <h2>New Release Albums</h2>
