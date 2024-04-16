@@ -22,3 +22,14 @@ main{
 .last{
     margin-bottom: 100px;
 }
+.splash{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    a{
+        font-size: 2rem;
+    }
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}

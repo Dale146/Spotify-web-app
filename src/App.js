@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Splash from "./Pages/Splash";
 import Home from "./Pages/Home";
+import SingleAlbum from "./Pages/SingleAlbum";
+import SinglePlaylist from "./Pages/SinglePlaylist";
 
 
 function App() {
@@ -18,8 +20,8 @@ function App() {
       
       <Route exact path ="/" element ={<Splash/>}/>
       <Route path= "/pages/Home" element ={<Home/>}/>
-    
-     
+      <Route path="/album/:id" element={<SingleAlbum/>}/>
+      <Route path="/playlist/:id" element={<SinglePlaylist/>}/>
     
       </Routes>
     </BrowserRouter>

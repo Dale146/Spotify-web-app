@@ -30,39 +30,7 @@ const Home = () =>{
     const [userID, setUserID] = useState("")
 
    
-    //     // get user's playlist
-    //     try {
-    //         const playlist = await fetch('https://api.spotify.com/v1/me/playlists', userParameters);
-    //         const userPlaylists = await playlist.json()
-    //         console.log(userPlaylists)
-    //         if (!playlist.ok) {
-    //             throw new Error('Failed to fetch user playlist');
-    //         }
 
-    //     } catch (error) {
-    //         console.error('Error fetching user playlist:', error);
-    //     }
-    //     // get user followed artists
-    //     try {
-    //         const followedArtists = await fetch("https://api.spotify.com/v1/me/following?type=artist",userParameters);
-    //         const userFollowedArtists = await followedArtists.json()
-    //         console.log(userFollowedArtists)
-    //         if (!followedArtists.ok) {
-    //             throw new Error('Failed to fetch user artists');
-    //         }
-
-    //     } catch (error) {
-    //         console.error('Error fetching user artists:', error);
-    //     }
-        
-    // }
-    
-    
-    // // clear token and local storage token when logout
-    // const logout = () => {
-    //     setToken("")
-    //     window.localStorage.removeItem("token")
-    // }
 
     
 

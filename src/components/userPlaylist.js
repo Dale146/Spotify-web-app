@@ -1,8 +1,10 @@
 import React from "react";
 import { useState, useEffect,useContext } from "react";
 import { contextAccessToken,contextUserToken } from "../context";
+import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 import NewRelease from "./NewRelease";
+
 
 const UserPlaylist = () => {
     const {token} = useAuth();
@@ -39,7 +41,7 @@ const UserPlaylist = () => {
         }
     }
         const userPlaylistInfo = userFollowedPlaylists.items || [];
-
+        const navigate = useNavigate()
 
             return (
                 <>
@@ -52,7 +54,7 @@ const UserPlaylist = () => {
                                 <section className="album-container">
                                     {userPlaylistInfo.map((playlist, index) => {
                                         return ( 
-                                            <div className="album" key={playlist.id}>
+                                            <div className="album" key={playlist.id} onClick={() => navigate(`/playlist/${playlist.id}`)}>
                                             <img src={playlist.images[0].url} alt={playlist.name} />
                                             <h5>{playlist.name}</h5>
                                             <span>tracks : {playlist.tracks.total}</span>
@@ -60,18 +62,6 @@ const UserPlaylist = () => {
                                             </div>
                                         );
                                     })}
-                                            <div className="album">
-                                            <img className="test" src="" />
-                                            <h5>my name</h5>
-                                            <span>tracks : 24</span>
-                                            
-                                            </div>
-                                            <div className="album">
-                                            <img className="test" src="" />
-                                            <h5>my name</h5>
-                                            <span>tracks : 24</span>
-                                            
-                                            </div>
                                 </section>
 
                     

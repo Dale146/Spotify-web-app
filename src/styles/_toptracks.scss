@@ -39,9 +39,20 @@
 // recommend tracks scss
 
 .reccomend-container{
+    position: relative;
     h2{
         margin-left: 20px;
         margin-right: 20px;
         color: $secondary-color;
     }
+}
+button{
+    background: none;
+    border: none;
+    
+}
+.reloader{
+    position: absolute;
+    top: 0;
+    right: 0;
 }

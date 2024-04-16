@@ -5,6 +5,7 @@ import useAuth from "./useAuth";
 import TopArtists from "./TopArtsts";
 import TopTracks from "./TopTracks";
 import Recommend from "./Recommend";
+import anonymouse from "../images/noUser.svg";
 
 const UserProfile = () => {
     const {token} = useAuth();
@@ -51,7 +52,7 @@ const UserProfile = () => {
                                 {token ?(
                                 <div className="profile-details">
                                     {userProfileInfo.images && userProfileInfo.images.length > 0 && (
-                                    <img src={userProfileInfo.images[1].url} alt="user picture"/>
+                                    <img src={userProfileInfo.images[1].url} alt="album"/>
                                     )}
                                 <section className="info-details">
 
@@ -66,7 +67,10 @@ const UserProfile = () => {
                             </div>
                                 ) : (
                                     <div className="profile-details">
-                                        
+                                        <img src={anonymouse} alt="anonymouse"/>
+                                        <section className="info-details">
+                                            <h2>Anonymouse</h2>
+                                        </section>
                                     </div>
                                 )}
 

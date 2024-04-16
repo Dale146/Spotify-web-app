@@ -1,6 +1,7 @@
 import React from "react";
 import { useState,useEffect,useContext } from "react";
 import {  contextAccessToken,contextUserToken } from "../context";
+import { useNavigate } from "react-router-dom";
 import searchIcon from "../images/search.svg";
 const Search = () => {
     const [albums,setAlbums] = useState([])
@@ -43,7 +44,7 @@ const Search = () => {
         
     }
     const artistAlbumsInfo = albums || [];
-
+    const navigate = useNavigate()
 
 
     return (
@@ -65,7 +66,9 @@ const Search = () => {
                 <div>
                     {artistAlbumsInfo.map((playlist, index) => {
                         return (
-                            <div className="album" key={playlist.id}>
+                            <div className="album" key={playlist.id} onClick={() => {
+                                navigate(`/album/${playlist.id}`)
+                            }}>
                             <img src={playlist.images[0].url} alt={playlist.name} />
                             <div className="album-details">
                             <h5>{playlist.name}</h5>
@@ -83,7 +86,7 @@ const Search = () => {
 
 
             ) : (
-                <p>{errorMSG}</p>
+                <p>No matches found</p>
             )}
          </div>
          
