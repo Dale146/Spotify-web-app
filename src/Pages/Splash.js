@@ -26,6 +26,7 @@ const Splash = () => {
         <a href={AUTH_ENDPOINT}>Login with Spotify</a>
         <Link to="/pages/Home">Home</Link>
         <p>This is a experimental app made By Dale.Do not support desktop view(For now).</p>
+        <p>Login function is unavailable on the live site due to spotify rules.</p>
         </div>
          
 
